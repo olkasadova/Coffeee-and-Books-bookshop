@@ -1,7 +1,13 @@
 <?php
- echo "Hi";
  
-?>
+ include ('includes/nav.php');
+ require ('db_connection.php');
+
+ $query = "SELECT * FROM books";
+ $result = mysqli_query ($link, $query);
+
+ if (mysqli_num_rows ($result)> 0){
+    ?>
 
 <!doctype html>
 <html lang="en">
@@ -13,82 +19,47 @@
   </head>
 <body>
 
-<section class = "cards">
-    <a href = "#" class  = "card">
-        
-        <div class = "card_image" >
-            <img src = "img/1984.jpg" class = "image" alt = "Book">
-        </div>
-        <div class = "card_author"> George Orwell </div> 
-        <input type = "submit" class = "add_to_cart" value = " ADD TO CART"> 
-        <div class = "card_snippet"> 
-        A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism
-        </div>
-        <div class = "card_readmore"> Read More </div>
-    </a>
+<h3>
+    Welcome 
+ </h3>   
+<div class="full-screen-container">
+    <section class = "cards">
+    <?php while ($row = mysqli_fetch_array ($result))
+{
+    ?>
+        <a href = "#" class  = "card">
+            
+            <div class = "card_image" >
+                <img src = "./img/<?php echo $row['book_img']; ?>"class = "image" alt = "Book">
+            </div>
+            <div class = "card_author"> <?php echo $row ['book_author']; ?> </div> 
+            <input type = "submit" class = "add_to_cart"  value = " ADD TO CART"> 
+            <div class = "card_snippet"> 
+                <?php echo $row ['book_desc']; ?>
+            </div>
+            <div class = "card_price"> <?php echo $row ['item_price']; ?> </div>
+            <div class = "card_readmore"> Read More </div>
+        </a>
+        <?php
+     }
+            ?>      
+    </section>
+</div>   
 
 
-    <a href = "#" class  = "card">
-        
-        <div class = "card_image" >
-            <img src = "img/catcher.jpg" class = "image" alt = "Book">
-        </div>
-        <div class = "card_author"> George Orwell </div> 
-        <input type = "submit" class = "add_to_cart" value = " ADD TO CART"> 
-        <div class = "card_snippet"> 
-        A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism
-        </div>
-        <div class = "card_readmore"> Read More </div>
-    </a>
-
-
-    <a href = "#" class  = "card">
-        
-        <div class = "card_image" >
-            <img src = "img/divine.jpg" class = "image" alt = "Book">
-        </div>
-        <div class = "card_author"> George Orwell </div> 
-        <input type = "submit" class = "add_to_cart" value = " ADD TO CART"> 
-        <div class = "card_snippet"> 
-        A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism
-        </div>
-        <div class = "card_readmore"> Read More </div>
-    </a>
-
-
-    <a href = "#" class  = "card">
-        
-        <div class = "card_image" >
-            <img src = "img/pride.jpg" class = "image" alt = "Book">
-        </div>
-        <div class = "card_author"> George Orwell </div> 
-        <input type = "submit" class = "add_to_cart" value = " ADD TO CART"> 
-        <div class = "card_snippet"> 
-        A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism
-        </div>
-        <div class = "card_readmore"> Read More </div>
-    </a>
-
-
-    <a href = "#" class  = "card">
-        
-        <div class = "card_image" >
-            <img src = "img/road.jpg" class = "image" alt = "Book">
-        </div>
-        <div class = "card_author"> George Orwell </div> 
-        <input type = "submit" class = "add_to_cart" value = " ADD TO CART"> 
-        <div class = "card_snippet"> 
-        A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism
-        </div>
-        <div class = "card_readmore"> Read More </div>
-    </a>
-    
-</section>
-
-
-<div>
- <span class="logout-link">  <a href="logout.php">Logout </a></span>
-</div>
+    </div>
+    <span class="logout-link">  <a href="logout.php">Logout </a></span>
+    </div>
 
 </body>
-</html>
+</html> 
+
+<?php
+    mysqli_close ($link);
+    }
+    else
+    {echo '<p> There are no items in the DB to display. </p>'; }
+   
+    include ('includes/footer.php');
+?>   
+
