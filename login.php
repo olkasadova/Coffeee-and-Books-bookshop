@@ -29,11 +29,11 @@ include ('includes/nav.php');
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="password" id="password" required>
                 </div>
-                
                 <div class="error">
                     <?php if ( isset( $errors ) && !empty( $errors ) ) { foreach ( $errors as $msg ) { echo "  $msg<br>" ; }
                          }?>
                 </div>
+               
                     <button type="submit" class="login-btn" id="login-btn" > Login </button>
                     <div>
                         <span class="register-link"> Register if you do not have an account  <a href="register.php">Register</a></span>
@@ -46,9 +46,14 @@ include ('includes/nav.php');
 </html>
 
 <?php
-session_start ();
-if (!isset ($_SESSION ['customer_id'])) {require ('login.php'); 
-    header ('Location: login.php');
-}
+
+//session_start();
+
+//if (!isset ($_SESSION ['customer_id'])) {
+   // require ('login.php'); 
+   //load();
+//}
+
+
 ?>
 

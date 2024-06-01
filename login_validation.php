@@ -40,4 +40,16 @@ function validate  ($link, $email="", $password=""){
     
  }
 
+ function load( $page = 'login.php')
+ {
+    $url = 'https://'. $SERVER ['HTTP_HOST']. dirname ( $_SERVER[' PHP_SELF']);
+
+    $url = rtim ($yrl, '/\\');
+    $url = '/'.$page;
+
+    //redirect
+    header ("Location: $url");
+    exit();
+ }
+
 ?>

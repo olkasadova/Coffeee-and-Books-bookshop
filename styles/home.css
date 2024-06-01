@@ -1,0 +1,70 @@
+.image {
+    max-height: 160px;
+    max-width: 160px;
+   
+    
+}
+body{
+    margin: 0;
+    padding: 0rem;
+    background-color: #545458;
+}
+
+.cards{
+    padding: 3rem;
+}
+
+.a {
+    background: transparent;
+}
+
+.card {
+display: flex;
+flex-direction: column;
+max-width: 450px;
+ background: rgb(233, 227, 227);
+ overflow: hidden;
+ color: black;
+ border-radius: 10px;
+ box-shadow: 3px 2px, 14px rgba (#262631, 0.4);
+ text-decoration: none;
+font-size: 1rem;
+
+}
+
+.card_image{
+    flex: 0 0 120px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+}
+
+.card_author{
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.card_snippet{
+    margin-bottom: 1.2rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.add_to_cart{
+    display: block;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    max-width: 260px;
+    border: none;
+    box-shadow: rgba(80, 80, 80, 0.5) 0 0 0 3px;
+    text-align: center;
+}
+
+.card_readmore{
+    text-align: center;
+}
