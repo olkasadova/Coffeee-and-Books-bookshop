@@ -1,4 +1,7 @@
 <?php
+include ('includes/session.php');
+?>
+<?php
  
  include ('includes/nav.php');
  require ('db_connection.php');
@@ -18,10 +21,7 @@
     <title>Welcome to Coffee and Books </title>
   </head>
 <body>
-
-<h3>
-    Welcome 
- </h3>   
+  
 <div class="full-screen-container">
     <section class = "cards">
     <?php while ($row = mysqli_fetch_array ($result))
@@ -33,12 +33,14 @@
                 <img src = "./img/<?php echo $row['book_img']; ?>"class = "image" alt = "Book">
             </div>
             <div class = "card_author"> <?php echo $row ['book_author']; ?> </div> 
-            <input type = "submit" class = "add_to_cart"  value = " ADD TO CART"> 
+            
             <div class = "card_snippet"> 
                 <?php echo $row ['book_desc']; ?>
             </div>
             <div class = "card_price"> <?php echo $row ['item_price']; ?> </div>
             <div class = "card_readmore"> Read More </div>
+            <div> <a href="added.php?id=<?php echo $row['book_id'];?>" >Add to Cart</a></div>
+           
         </a>
         <?php
      }

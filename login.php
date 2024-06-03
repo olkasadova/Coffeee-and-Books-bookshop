@@ -3,7 +3,6 @@ include ('includes/nav.php');
 
 ?>
 
-
 <!doctype html>
 <html lang="en">
   <head>

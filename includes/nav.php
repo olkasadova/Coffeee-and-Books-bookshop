@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,7 +11,11 @@
 <body>
     <nav>
         <div class = "logo">
-            <p> coffee & books </p>
+            
+            <p class = "welcome">
+                Welcome 
+                <?php if (isset($_SESSION ['customer_id'])) {echo "{$_SESSION ['first_name']}";} ?>
+            </p> 
         </div>
         <ul>
             

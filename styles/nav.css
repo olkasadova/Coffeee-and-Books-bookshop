@@ -43,3 +43,7 @@ nav li a:hover{
 .logo{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.welcome{
+    font-size: medium;
+    color: red;
+}
