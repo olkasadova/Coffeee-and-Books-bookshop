@@ -5,22 +5,21 @@ include ('includes/nav.php');
 ?>
 
 <?php
+//update quatity if is posted on the page
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
-
-{
-    foreach  ($_POST ['quantity'] as $book_id=> $book_qty)
-    {   
-        $id = (int)$book_id;
-        $quantity = (int) $book_qty;
-    
-
-        if ($quantity == 0){
-            unset ($_SESSION ['cart'][$id]);}
-        elseif ($quantity > 0){
-            $_SESSION ['cart'][$id]['quantity'] = $quantity;}
-    }   
-}
-
+        {
+            foreach  ($_POST ['quantity'] as $book_id=> $book_qty)
+            {   
+                $id = (int)$book_id;
+                $quantity = (int) $book_qty;
+                //check the quantity value. If it is 0 than remove items from a cart
+                if ($quantity == 0){
+                    unset ($_SESSION ['cart'][$id]);}
+                elseif ($quantity > 0){
+                    $_SESSION ['cart'][$id]['quantity'] = $quantity;}
+            }   
+        }
+//set total initial value
 $total = 0;
 
 
@@ -33,11 +32,9 @@ if (!empty ($_SESSION ['cart']))
 
         $query = substr ($query, 0, -1) . ") ORDER BY book_id ASC";
         $result = mysqli_query ($link,  $query);
-    
-   
-
-
         ?>
+
+
         <!doctype html>
         <html lang="en">
         <head>
@@ -53,7 +50,7 @@ if (!empty ($_SESSION ['cart']))
 
         //display container
         echo '
-                <h2> Shopping cart </h2>
+            <h2> Shopping cart </h2>
                 <div class=\"full-screen-container\">
                     <form class = "cart-book" action = "cart.php" method = "post">;
                         ';
@@ -93,44 +90,39 @@ if (!empty ($_SESSION ['cart']))
                         }
                         
                     mysqli_close ($link);
-
                         
                         ?>
                             <div class = "total-group">
-                                    <p class = "total"> Total = &pound $total</p><br>
-
-                                    <p><input type="submit" name="submit" class="update-btn" value="Update My Cart"></p>
-                                    <br>
-                                    
-                                    <a href="checkout.php?total=<?php echo $total;?>" class="checkout-btn">Checkout Now</a><br>
+                                <p class = "total"> Total = &pound $total</p><br>
+                                <p><input type="submit" name="submit" class="update-btn" value="Update My Cart"></p>
+                                <br>
+                                <a href="checkout.php?total=<?php echo $total;?>" class="checkout-btn">Checkout Now</a><br>
                             </div> 
                     </form>
                 </div> 
-
             ";
- <?php           
+    <?php           
  }    
      
 else {
-    ?>
-     <!doctype html>
-        <html lang="en">
-            <head>
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" type="text/css" href="styles/cart.css" /> 
-                <title>Welcome to Coffee and Books </title>
-            </head>
-            
-        <div class="full-screen-container">
-            <div class = "added-container">
-                <p > Your cart is empty  </p>
-                <br>
-                <a href="home.php">Continue Shopping</a> 
+        ?>
+        <!doctype html>
+            <html lang="en">
+                <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <link rel="stylesheet" type="text/css" href="styles/cart.css" /> 
+                    <title>Welcome to Coffee and Books </title>
+                </head>
+                
+            <div class="full-screen-container">
+                <div class = "added-container">
+                    <p > Your cart is empty  </p>
+                    <br>
+                    <a href="home.php">Continue Shopping</a> 
+                </div>
             </div>
-        </div>
-         
- <?php 
-}           
-
+            
+        <?php 
+    }           
 ?>  

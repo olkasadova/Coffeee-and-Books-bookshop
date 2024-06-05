@@ -1,67 +1,69 @@
 <?php
 include ('includes/session.php');
+include ('includes/nav.php');
+require ('db_connection.php');
 ?>
+
 <?php
+//select all items and show to user
+    $query = "SELECT * FROM books";
+    $result = mysqli_query ($link, $query);
+
+
+if (mysqli_num_rows ($result)> 0)
  
- include ('includes/nav.php');
- require ('db_connection.php');
-
- $query = "SELECT * FROM books";
- $result = mysqli_query ($link, $query);
-
- if (mysqli_num_rows ($result)> 0){
-    ?>
-
+{
+ ?>
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/home.css" /> 
     <title>Welcome to Coffee and Books </title>
-  </head>
+</head>
 <body>
-  
-<div class="full-screen-container">
-    <section class = "cards">
-    <?php while ($row = mysqli_fetch_array ($result))
-{
-    ?>
-        <a href = "#" class  = "card">
-            
-            <div class = "card_image" >
-                <img src = "./img/<?php echo $row['book_img']; ?>"class = "image" alt = "Book">
-            </div>
-            <div class = "card_author"> <?php echo $row ['book_author']; ?> </div> 
-            
-            <div class = "card_snippet"> 
-                <?php echo $row ['book_desc']; ?>
-            </div>
-            <div class = "card_price"> <?php echo $row ['item_price']; ?> </div>
-            <div class = "card_readmore"> Read More </div>
-            <div> <a href="added.php?id=<?php echo $row['book_id'];?>" >Add to Cart</a></div>
-           
-        </a>
-        <?php
-     }
-            ?>      
-    </section>
-</div>   
-
-
-    </div>
-    <span class="logout-link">  <a href="logout.php">Logout </a></span>
-    </div>
-
+        
+        <div class="full-screen-container">
+            <section class = "cards">
+        
+                <?php 
+                    while ($row = mysqli_fetch_array ($result))
+                    //for each record found in the database display a separate card 
+                    {
+                ?>
+                            <a href = "#" class  = "card">
+                            
+                            <div class = "card_image" >
+                                <img src = "./img/<?php echo $row['book_img']; ?>"class = "image" alt = "Book">
+                            </div>
+                            <div class = "card_author"> <?php echo $row ['book_author']; ?> </div> 
+                            <div class = "card_snippet"> 
+                                <?php echo $row ['book_desc']; ?>
+                            </div>
+                            <div class = "card_price"> <?php echo $row ['item_price']; ?> </div>
+                            <div class = "card_readmore"> Read More </div>
+                            <div> <a href="added.php?id=<?php echo $row['book_id'];?>" >Add to Cart</a></div>
+                        
+                        </a>
+                    <?php
+                    }
+                    ?>      
+            </section>
+        </div>   
+        </div>
+            <span class="logout-link">  <a href="logout.php">Logout </a></span>
+        </div>
 </body>
 </html> 
 
 <?php
     mysqli_close ($link);
-    }
-    else
+}
+//display a message if there are no books to display
+ else
     {echo '<p> There are no items in the DB to display. </p>'; }
    
-    include ('includes/footer.php');
+include ('includes/footer.php');
 ?>   
 

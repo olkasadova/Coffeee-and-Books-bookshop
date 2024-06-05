@@ -31,7 +31,7 @@ if (isset ($_SESSION ['cart'][$id]))
 <div class="full-screen-container">
     <div class = "added-container">
 
-    <h1 class="added-title" > Congratulations! </h1>
+        <h1 class="added-title" > Congratulations! </h1>
 
             <div class="input-group">
                 <p>One more "<?php echo $row ['book_name']; ?>"  by <?php echo $row ['book_author']; ?>  was added to your cart</p>
