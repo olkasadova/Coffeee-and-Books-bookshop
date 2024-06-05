@@ -1,6 +1,6 @@
 <?php
 include ('includes/session.php');
-
+include ('includes/nav.php');
 ?>
 
 <?php
@@ -41,8 +41,35 @@ if ( isset ($_GET ['total']) )
              $result_ins = mysqli_query ($link, $query);
             }  
             mysqli_close($link);
-        echo "<p> We are processing your order. Order Number is № $order_id</p> ";
+?>
+        <!doctype html>
+        <html lang="en">
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" type="text/css" href="styles/checkout.css" /> 
+                <title>Welcome to Coffee and Books </title>
+            </head>
+
+            <div class="full-screen-container">
+                <div class = "added-container">
+                    <p> We are processing your order. Order Number is № <?php echo $order_id ?></p>
+                    <br>
+                    <a href="home.php">Continue Shopping</a>
+                </div>
+            </div>
+<?php 
+//clear the cart    
+$_SESSION['cart'] = NULL ;   
 }
 else{
-    echo "no condition";
+    ?>
+     <div class="full-screen-container">
+            <div class = "added-container">
+                <p> Your cart is empty </p>
+                <br>
+                <a href="home.php">Continue Shopping</a>
+            </div>
+      </div>
+  <?php
 }

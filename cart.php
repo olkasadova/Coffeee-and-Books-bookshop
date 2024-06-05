@@ -124,9 +124,9 @@ else {
             
         <div class="full-screen-container">
             <div class = "added-container">
-                     <h1 class="added-title" > Your cart is empty  </h1>
-
-                         <a href="home.php">Continue Shopping</a> 
+                <p > Your cart is empty  </p>
+                <br>
+                <a href="home.php">Continue Shopping</a> 
             </div>
         </div>
          
