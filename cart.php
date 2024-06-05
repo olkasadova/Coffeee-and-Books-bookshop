@@ -94,18 +94,21 @@ if (!empty ($_SESSION ['cart']))
                         
                     mysqli_close ($link);
 
-                        echo "
-                            <div class = \"total-group\">
-                                    <p class = \"total\"> Total = &pound $total</p><br>
+                        
+                        ?>
+                            <div class = "total-group">
+                                    <p class = "total"> Total = &pound $total</p><br>
 
-                                    <p><input type=\"submit\" name=\"submit\" class=\"update-btn\" value=\"Update My Cart\"></p>
+                                    <p><input type="submit" name="submit" class="update-btn" value="Update My Cart"></p>
                                     <br>
-                                    <a href=\"checkout.php?total='.$total.'\" class=\"checkout-btn\">Checkout Now</a><br>
+                                    
+                                    <a href="checkout.php?total=<?php echo $total;?>" class="checkout-btn">Checkout Now</a><br>
                             </div> 
                     </form>
                 </div> 
 
             ";
+ <?php           
  }    
      
 else {
