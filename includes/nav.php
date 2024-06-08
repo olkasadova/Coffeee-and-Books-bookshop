@@ -12,7 +12,7 @@
     <nav>
         <div class = "logo">
             
-            <p class = "welcome">
+            <p id = "welcome" >
                 Welcome 
                 <?php if (isset($_SESSION ['customer_id'])) {echo "{$_SESSION ['first_name']}";} ?>
             </p> 

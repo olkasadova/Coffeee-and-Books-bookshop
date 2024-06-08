@@ -1,0 +1,18 @@
+Register
+    1. Positive: Open Register page-> fill-in all fields-> click Register-> "You are successfully registered!" message-> go to Login page and login with created account
+    2. Negative: password and re-entered password do not match-> "Passwords do not match" message-> go to Login page and check you can't login
+    3. Negative: fill-in all fields-> Refresh-> check all values are reset (empty)
+    4. Link: check Login link does work
+
+Login
+    1. +Positive: open home page-> redirect to login page. 
+    2. Positive: Login with the existing user with proper email and password-> check user name in Nav bar-> check cookie with session
+    3. Negative: Try to login with incorrect email-> Your e-mail or passowrd were not found. Please try again
+    4. Negative: Try to login with incorrect passowrd-> Your e-mail or passowrd were not found. Please try again-> click Home page link-> redirect to Logn, error message is cleared
+    5. Negative: Login with empty email and password-> No login, user stays on Login page
+    6. Register link works
+Cart Handling:
+    1. Positive: Open Shopping Cart-> user stays on Login
+    2. Positive: Login (create a function)-> Go to Home-> add 1 item-> check it appeared in the Cart
+    3. Positive: Login (create a function)-> Go to Home-> add 1 item-> check it appeared in the Cart-> add the same item from Home-> check cart has 2 in quantity
+    //add an item could be a function

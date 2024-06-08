@@ -22,18 +22,18 @@ include ('includes/nav.php');
 
                 <div class="input-group">
                     <label for="email"><b>E-mail</b></label>
-                    <input type="email" placeholder="Enter e-mail" name="email" id="email" required>
+                    <input type="email" placeholder="Enter e-mail" name="email" data-cy = "login-email" id="email" required>
                 </div>
                 <div class="input-group">
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+                    <input type="password" placeholder="Enter Password" name="password" data-cy = "login-passowrd" id="password" required>
                 </div>
                 <div class="error">
                     <?php if ( isset( $errors ) && !empty( $errors ) ) { foreach ( $errors as $msg ) { echo "  $msg<br>" ; }
                          }?>
                 </div>
                
-                    <button type="submit" class="login-btn" id="login-btn" > Login </button>
+                    <button type="submit" class="login-btn" data-cy = "login-submit" id="login-btn" > Login </button>
                     <div>
                         <span class="register-link"> Register if you do not have an account  <a href="register.php">Register</a></span>
                     </div>
