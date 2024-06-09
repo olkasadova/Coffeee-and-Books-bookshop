@@ -7,12 +7,14 @@ describe('Home page redirect for unlogged user', () => {
       //login with valid email and passowrd
       cy. login ('olha@gmail.com', '12345')
 
-      cy.get ('[data-cy = "card_author"]').contains ("Harper Lee")
-      cy.get ('[data-cy = "add-cart"]').click()
+      //click the link with 1st index
+      cy.get('[data-cy = "add-cart"]').eq(0).click()
 
-     //check that user is redirected to Add to Cart page
+     //check that user is redirected to Add to Cart page and has 
       cy.url().should('include', '/added')
-
+      cy.get('.input-group').get ('p').contains ("added to your cart")
+      cy.clickLink("View Your Cart")
+      
     //  cy.log("Redirected from Home page to Login")
     })
   })
