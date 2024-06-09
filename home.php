@@ -32,23 +32,23 @@ if (mysqli_num_rows ($result)> 0)
                     //for each record found in the database display a separate card 
                     {
                 ?>
-                            <a href = "#" class  = "card">
+                        <div class  = "card">
                             
                             <div class = "card_image" >
                                 <img src = "./img/<?php echo $row['book_img']; ?>"class = "image" alt = "Book">
                             </div>
-                            <div class = "card_author"> <?php echo $row ['book_author']; ?> </div> 
+                            <div class = "card_author" data-cy = "card_author"> <?php echo $row ['book_author']; ?> </div> 
                             <div class = "card_snippet"> 
                                 <?php echo $row ['book_desc']; ?>
                             </div>
                             <div class = "card_price"> <?php echo $row ['item_price']; ?> </div>
                             <div class = "card_readmore"> Read More </div>
-                            <div> <a href="added.php?id=<?php echo $row['book_id'];?>" >Add to Cart</a></div>
+                            <div class = "add-cart" data-cy = "add-cart"> <a href="added.php?id=<?php echo $row['book_id'];?>" >Add to Cart</a></div>
                         
-                        </a>
-                    <?php
+                        </div>
+                <?php
                     }
-                    ?>      
+                ?>      
             </section>
         </div>   
         </div>

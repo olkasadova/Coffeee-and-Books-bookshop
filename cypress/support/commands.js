@@ -22,10 +22,32 @@ Cypress.Commands.add('clickLink', (label) => {
 
   //function to register user
   Cypress.Commands.add('register', (firstName, lastName, email, password, confirmPassword) => { 
+
     cy.get ('[data-cy = "first-name"]').type (firstName)
     cy.get ('[data-cy = "last-name"]').type (lastName)
     cy.get ('[data-cy = "reg-email"]').type (email)
     cy.get ('[data-cy = "reg-password"]').type (password)
-    cy.get ('[data-cy = "confirmPassword"]').click (confirmPassword)
+    cy.get ('[data-cy = "confirmPassword"]').type (confirmPassword)
+    cy.get ('[data-cy = "reg-submit"]').click ()
+     })  
+
+      //function to register user
+  Cypress.Commands.add('register_random', () => { 
+    //generate a random data for registering a user
+    const uuid = () => Cypress._.random (0, 1e6)
+    const id = uuid()
+    const firstname = `testFirstname${id}`
+    const lastname = `testLastname${id}`
+    //generate a 5-symbol random password (took a number value), could be rewritten to alpha-numberic
+
+
+    cy.log ("Random user name is " + firstname + " " + lastname)
+    cy.get ('[data-cy = "first-name"]').type (firstname) 
+    cy.get ('[data-cy = "last-name"]').type (lastname)
+    cy.get ('[data-cy = "reg-email"]').type (lastname + '@test.com')
+    cy.get ('[data-cy = "reg-password"]').type (id)
+    cy.get ('[data-cy = "confirmPassword"]').type (id)
+
+    cy.log (id)
     cy.get ('[data-cy = "reg-submit"]').click ()
      })  

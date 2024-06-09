@@ -17,7 +17,7 @@
                 <?php if (isset($_SESSION ['customer_id'])) {echo "{$_SESSION ['first_name']}";} ?>
             </p> 
         </div>
-        <ul>
+        <ul class="navbar">
             
             <li class="nav-item ">
               <a class="nav-link" href="home.php">Home <span class="sr-only"></span></a>
