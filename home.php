@@ -41,7 +41,7 @@ if (mysqli_num_rows ($result)> 0)
                             <div class = "card_snippet"> 
                                 <?php echo $row ['book_desc']; ?>
                             </div>
-                            <div class = "card_price"> <?php echo $row ['item_price']; ?> </div>
+                            <div class = "card_price" data-cy = "card_price"> <?php echo $row ['item_price']; ?> </div>
                             <div class = "card_readmore"> Read More </div>
                             <div class = "add-cart"> <a data-cy = "add-cart" href="added.php?id=<?php echo $row['book_id'];?>" >Add to Cart</a></div>
                         
