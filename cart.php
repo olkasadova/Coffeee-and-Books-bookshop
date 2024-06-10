@@ -72,13 +72,14 @@ if (!empty ($_SESSION ['cart']))
                                                         <div class = \"name\"> {$row ['book_name']} </div> 
                                                     </td>
                                                     <td>   
-                                                        <div class = \"name\"> {$row ['book_author']} </div> 
+                                                        <div class = \"author\" data-cy = \"author\"> {$row ['book_author']} </div> 
                                                     </td>
                                                     <td>   
                                                             <div class = \"card_price\"> {$row ['item_price']} </div>
                                                     </td>  
                                                     <td>      
                                                             <input type=\"text\" 
+                                                            class = \"quantity\"
                                                             size=\"3\" 
                                                             name=\"quantity[{$row['book_id']}]\" 
                                                             value=\"{$_SESSION['cart'][$row['book_id']]['quantity']}\">
